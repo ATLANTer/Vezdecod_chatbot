@@ -102,6 +102,7 @@ def index():
             buttons.append({"title": variant})
         response["response"]["buttons"] = buttons
         # response["response"]["card"] = {"type": "BigImage", "image_id": 457239017}
+        # Запрос выстроен в соответствии с документацией, однако он не работает. Ошибка разработчиков Маруси
     else:
         q_id = users[req["session"]["application"]["application_id"]]["quest_id"]
         if req["request"]["original_utterance"] == questions[q_id]["answer"]:
@@ -118,8 +119,9 @@ def index():
                    f"Для повторного прохождения теста просто напиши мне что-нибудь."
             response["response"]["text"] = text
             response["response"]["tts"] += text
-            # response["response"]["commands"] = [
-            #                                     {"type": "MiniApp", "url": "[https://vk.com/app7543093]"}]
+            # response["response"]["commands"] = [{"type": "BigImage", "image_id": 457239018},
+            #                                     {"type": "MiniApp", "url": "https://vk.com/app7543093"}]
+            # Запрос выстроен в соответствии с документацией, однако он не работает. Ошибка разработчиков Маруси
             response["response"]["end_session"] = True
         else:
             response["response"]["text"] = questions[q_id]["question"]
